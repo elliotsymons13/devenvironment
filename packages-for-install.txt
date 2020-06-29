@@ -1,0 +1,8 @@
+code
+cmake
+code
+git
+grep
+python3
+python3-pip
+ranger
