@@ -11,6 +11,18 @@
 
 set $mod Mod4
 
+# Run startup commands 
+# Set keyboard layout UK ref: https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3 
+exec_always setxkbmap -layout gb
+# Get copy paste working in VMware...
+exec_always --no-startup-id vmware-user-suid-wrapper
+# Set 200% scaling (96 is 100%)
+#exec "xrandr --dpi 192" # too big on 1080, good on 4k
+# Fix scaling using Xresources file (value inserted in setup script)
+exec xrdb ~/.Xresources
+
+
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8

@@ -13,6 +13,11 @@ sudo apt-get upgrade -y
 # File must have LF line endings. 
 xargs sudo apt-get install -y < packages-for-install.txt
 
+# Install chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+
+
 # Install VSCode (needs repo dependency)
 #ref: https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-18-04/
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -

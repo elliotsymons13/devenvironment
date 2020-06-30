@@ -25,3 +25,4 @@ Mod+shift+r - reload i3
 # Programs (from dmenu)
 nautilus - file manager
 code - vscode
+google-chrome - chrome web browser

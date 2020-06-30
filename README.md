@@ -8,7 +8,7 @@ Install ubuntu on VM/host, then clone down this repo and run:
 sudo dev-environment-setup.sh
 ```
 
-After this, optionally install and configure i3 with:
+*After this*, optionally install and configure i3 with:
 
 ```bash
 TODO
