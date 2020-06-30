@@ -31,3 +31,6 @@ do
     code --install-extension $line
 done
 
+# Copy in vscode settings
+cp vscode-settings.json ~/.config/Code/User/settings.json
+# TODO error checks

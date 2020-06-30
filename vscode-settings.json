@@ -1,0 +1,37 @@
+{
+    "files.autoSave": "onFocusChange",
+    "window.zoomLevel": -1,
+    "git-graph.maxDepthOfRepoSearch": 5,
+    "todo-tree.highlights.enabled": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "todo-tree.tree.showScanModeButton": false,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "todo-tree.highlights.defaultHighlight": {
+        "icon": "alert",
+        "type": "text",
+        "opacity": 50,
+        "iconColour": "blue",
+    },
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "icon": "check",
+        },
+        "FIXME": {
+            "foreground": "white",
+            "background": "red",
+            "iconColour": "red",
+            "gutterIcon": true
+        },
+        "BUG": {
+            "foreground": "white",
+            "background": "red",
+            "iconColour": "yellow",
+            "gutterIcon": true
+        }
+    },
+    "workbench.colorTheme": "Monokai",
+    "git.enableSmartCommit": true
+}
