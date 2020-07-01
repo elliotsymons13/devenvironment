@@ -170,6 +170,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # also configure colours
 bar {
+        # position top
         colors {
         background #2f343f
         statusline #2f343f

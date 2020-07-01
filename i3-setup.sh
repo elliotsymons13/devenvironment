@@ -98,7 +98,9 @@ else
         exit 1
     fi
 fi
-# TODO more configs here, EG i3status, etc.
+# TODO more configs here, EG i3status, etc. including making dirs
+#mkdir ~/.config/i3status
+#...
 echo "Finished installing all configs. " | tee -a $logfile
 if [ "$stepwise" = true ] ; 
 then
