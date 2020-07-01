@@ -1,17 +1,18 @@
 # Purpose
 
 # Usage
-To install dev environment basics, assuming Ubuntu 1804 (tested). 
+To install dev environment basics, assuming Ubuntu 1804 LTS (tested here only, but may work on others). 
 
 Install ubuntu on VM/host, then clone down this repo and run:
 ```bash
-sudo dev-environment-setup.sh
+#cd to folder
+bash ./dev-environment-setup.sh
 ```
 
 *After this*, optionally install and configure i3 with:
 
 ```bash
-TODO
+sudo bash ./i3-setup.sh
 ```
 
 # File descriptions

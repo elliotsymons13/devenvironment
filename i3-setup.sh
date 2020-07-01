@@ -12,6 +12,7 @@ sudo apt-get install -y compton hsetroot
 # TODO configure these
 
 # Copy in config file
+mkdir -p ~/.config/i3/
 cp i3-config.txt ~/.config/i3/config
 # TODO check errors
 
@@ -21,3 +22,5 @@ cp i3-config.txt ~/.config/i3/config
 touch ~/.Xresources
 echo "Xft.dpi: 96" > ~/.Xresources
 xrdb ~/.Xresources
+
+# TODO reboot at end of script?

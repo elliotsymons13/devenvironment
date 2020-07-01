@@ -1,6 +1,4 @@
-code
 cmake
-code
 git
 grep
 python3
