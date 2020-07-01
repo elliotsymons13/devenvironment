@@ -8,7 +8,7 @@ printUsage() {
 }
 
 # Defaults
-exitonfail=false # TODO make argument
+exitonfail=false
 stepwise=false
 
 logfile="./dev-env-setup.log"
