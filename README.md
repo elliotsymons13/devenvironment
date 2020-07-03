@@ -19,7 +19,27 @@ tail -f ~/Desktop/DevEnvSetup/dev-env.setup.log
 ./i3-setup.sh
 ```
 
-# File descriptions
+# Config descriptions
+## i3 config: ~/.config/i3/config
+
+Colours can be changed in the ~/.Xresources file. The following command must be used to reload the file for the changes to take effect
+```bash
+xrdb ~/.Xresources
+```
+These colours can then be inherited in the i3 config file using commands such as
+```bash
+set_from_resource $accent1 accent1
+```
+where the last value is the name in the .Xresources file. A default can optionally be given after this, in #000000 format. Other applications can inherit the same colour values from .Xresources where supported. 
+
+## Xresrouces: ~/.Xresources
+This file is used to specify colours for import into the i3 config, and can be used by other programs Eg terminal emulators for consistent theming (not yet implemented here). 
+
+## i3status config: ~/.config/i3status/config
+Used to specify the format and content of the status bar. Alternatives offer more functionality, e.g. i3blocks, but I didn't see them as necessary yet. 
+
+
+# List descriptions
 ## vscode-extensions-for-install.txt
 This file lists all extension names, and can be used to programatically install a desired set of extensions as shown below. Must use unix line endings (LF not CRLF). 
 

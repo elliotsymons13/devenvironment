@@ -1,0 +1,9 @@
+Xft.dpi: 96
+
+! === colourscheme for i3 === https://coolors.co/08d2d9-feb548-f05d5e-0f7173-2f343f
+*background: #2f343f
+*textlight: #d8dee8
+*textdark: #000000
+
+*accent1: #FEB548 
+*accent2: #F05D5E

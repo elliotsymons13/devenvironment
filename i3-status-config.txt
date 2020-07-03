@@ -1,23 +1,26 @@
 general {
-	colors = true
-	color_good = "#BBBBBB"
-	color_bad = "#CC1616"
-	color_degraded = "#55858E"
-	interval = 2
+        output_format = "i3bar"
+        colors = false
+        markup = pango
+        interval = 5
+        #color_good = '#ffffff'
+        #color_degraded = '#ebcb8b'
+        #color_bad = '#eba88b'
 }
 
 order += "cpu_usage"
-order += "battery 0"
-order += "wireless wlan0"
+order += "battery all"
+order += "wireless _first_"
+order += "ethernet _first_"
 order += "tztime local"
 
 cpu_usage {
-	format = "CPU: %usage "
+	format = "<span background='#F05D5E'> CPU: %usage </span>"
 }
 
-battery 0 {
-        format = "%status %percentage %remaining %emptytime"
-        format_down = "No battery"
+battery all {
+        format = "<span background='#F05D5E'> %status %percentage %remaining </span>"
+        format_down = "<span background='#F05D5E'> No battery </span>"
         status_chr = "⚡ CHR"
         status_bat = "🔋 BAT"
         status_unk = "? UNK"
@@ -26,18 +29,18 @@ battery 0 {
         low_threshold = 10
 }
 
-wireless wlan0 {
-        format_up = "Wi-Fi: (%quality at %essid, %bitrate) %ip"
-        format_down = "Wi-Fi: down"
+
+wireless _first_ {
+        format_up = "<span background='#F05D5E'> Wi-Fi: (%quality at %essid, %bitrate) %ip </span>"
+        format_down = "<span background='#F05D5E'> No Wi-Fi </span>"
 }
 
-ethernet eth0 {
+ethernet _first_ {
         # if you use %speed, i3status requires the cap_net_admin capability
-        format_up = "Eth: %ip (%speed)"
-        format_down = "Eth: down"
+        format_up = "<span background='#F05D5E'> Eth: %ip </span>"
+        format_down = "<span background='#F05D5E'> Eth: Disconnected </span>"
 }
-
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = " %Y-%m-%d %H:%M:%S "
 }
