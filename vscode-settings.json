@@ -33,5 +33,7 @@
         }
     },
     "workbench.colorTheme": "Monokai",
-    "git.enableSmartCommit": true
+    "git.enableSmartCommit": true,
+    "workbench.iconTheme": "material-icon-theme"
+
 }

@@ -2,18 +2,25 @@
 
 # Usage
 To install dev environment basics, assuming Ubuntu 1804 LTS (tested here only, but may work on others). 
+# TODO tested on Ubuntu 20??
 
-Install ubuntu on VM/host, then clone down this repo. Copy it onto VM desktop, then run:
+Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion (to avoid dpkg lock conflicts). Restart as prompted and login again.
+
+Now run the following commands:
+
 ```bash
-cd Desktop/DevEnvSetup/
+sudo apt-get install -y git # enter password as prompted
+git clone https://github.com/elliotsymons13/devenvironment.git
+cd ~/devenvironment/
+sudo chmod 755 ./dev-env-setup.sh 
 ./dev-environment-setup.sh -e -s
 ```
 Can optionally monitor detailed log with:
 ```bash
-tail -f ~/Desktop/DevEnvSetup/dev-env.setup.log
+tail -f ~/devenvironment/dev-env-setup.log
 ```
 
-*After this*, optionally install and configure i3 with:
+*After this*, optionally install and configure i3 window manager with:
 
 ```bash
 ./i3-setup.sh
