@@ -23,6 +23,8 @@ tail -f ~/devenvironment/dev-env-setup.log
 *After this*, optionally install and configure i3 window manager with:
 
 ```bash
+cd ~/devenvironment/
+sudo chmod 755 ./i3-setup.sh
 ./i3-setup.sh
 ```
 

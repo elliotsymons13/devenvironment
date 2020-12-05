@@ -81,7 +81,7 @@ fi
 
 # Install additional packages to impove experience
 #sudo apt-get install -y compton hsetroot
-# TODO configure these
+# TODO configure the above
 
 # Copy in i3 config file
 echo "Copying i3 config files... " | tee -a $logfile
@@ -89,7 +89,7 @@ mkdir -p ~/.config/i3/
 cp i3-config.txt ~/.config/i3/config >> $logfile
 if [ $? -eq 0 ] 
 then
-    printf "Installed i3 config files.  \n\n" | tee -a $logfile
+    printf "Installed i3 config file.  \n\n" | tee -a $logfile
 else 
     printf "=== FAILURE to install i3 config === \n" | tee -a $logfile
     if [ "$exitonfail" = true ]; 
@@ -98,22 +98,60 @@ else
         exit 1
     fi
 fi
-# TODO more configs here, EG i3status, etc. including making dirs
-#mkdir ~/.config/i3status
+
+# TODO Fix scaling - make Xresources file
+#ref: https://www.reddit.com/r/i3wm/comments/6kxq83/i3wm_scaling_is_correct_but_programs_are_not_hidpi/
+# TODO make value conditional based on screen size? Currently good only for 1080p
+echo "Copying Xresources file... " | tee -a $logfile
+cp ./Xresources.txt ~/.Xresources
+if [ $? -eq 0 ] 
+then
+    printf "Installed Xresources file.  \n\n" | tee -a $logfile
+else 
+    printf "=== FAILURE to install Xresources file === \n" | tee -a $logfile
+    if [ "$exitonfail" = true ]; 
+    then
+        echo "Exiting... see log for details" | tee -a $logfile
+        exit 1
+    fi
+fi
+xrdb ~/.Xresources
+if [ $? -eq 0 ] 
+then
+    printf "Re-loaded Xresources file.  \n\n" | tee -a $logfile
+else 
+    printf "=== FAILURE to reload Xresources file === \n" | tee -a $logfile
+    if [ "$exitonfail" = true ]; 
+    then
+        echo "Exiting... see log for details" | tee -a $logfile
+        exit 1
+    fi
+fi
+
+
+# Copy in i3status  config file
+echo "Copying i3status config file... " | tee -a $logfile
+mkdir -p ~/.config/i3status
+cp i3-status-config.txt ~/.config/i3status/config >> $logfile
+if [ $? -eq 0 ] 
+then
+    printf "Installed i3status config file.  \n\n" | tee -a $logfile
+else 
+    printf "=== FAILURE to install i3status config === \n" | tee -a $logfile
+    if [ "$exitonfail" = true ]; 
+    then
+        echo "Exiting... see log for details" | tee -a $logfile
+        exit 1
+    fi
+fi
+
+
 #...
 echo "Finished installing all configs. " | tee -a $logfile
 if [ "$stepwise" = true ] ; 
 then
     read -rsn1 -p"Press any key to continue";echo
 fi
-
-# Fix scaling - make Xresources file
-#ref: https://www.reddit.com/r/i3wm/comments/6kxq83/i3wm_scaling_is_correct_but_programs_are_not_hidpi/
-# TODO make value conditional based on screen size? Currently good only for 1080p
-touch ~/.Xresources
-echo "Xft.dpi: 96" > ~/.Xresources
-xrdb ~/.Xresources
-
 
 # reboot required to get to i3
 echo "Need to reboot to finalise installation of i3..."  | tee -a $logfile

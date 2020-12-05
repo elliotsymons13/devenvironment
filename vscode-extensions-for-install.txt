@@ -14,3 +14,4 @@ streetsidesoftware.code-spell-checker
 waderyan.gitblame
 yzhang.markdown-all-in-one
 redhat.vscode-yaml
+naumovs.color-highlight
