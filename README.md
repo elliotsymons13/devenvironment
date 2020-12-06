@@ -1,11 +1,18 @@
 # Purpose
 
+# Warnings
+There are several limitations in it's current state:
+ - Tested only on Ubuntu 20 and 18, using bash shell
+ - Does not support hdpi displays
+ - Does not support OLED displays (brightness will be locked on full)
+ - (The above two can be mitigated when running in a VM using host settings)
+
 # Usage
 Follow these intructions to configure the development environment on an Ubuntu 18LTS or 20 host. It has been roughly tested on each. 
 
 Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion (to avoid dpkg lock conflicts). Restart as prompted and login again.
 
-Now run the following commands:
+Now run the following commands to run the script. **Note that the script assumes it is run from it's own location (relative filepaths).** 
 
 ```bash
 sudo apt-get install -y git # enter password as prompted
@@ -19,7 +26,7 @@ Can optionally monitor detailed log with:
 tail -f ~/devenvironment/dev-env-setup.log
 ```
 
-*After this*, optionally install and configure i3 window manager with:
+*After this*, optionally install and configure i3 window manager with the following. **Note that this depends on several of the packages in the packages-to-install list, so the above must be run first.**
 
 ```bash
 cd ~/devenvironment/
