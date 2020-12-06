@@ -1,8 +1,7 @@
 # Purpose
 
 # Usage
-To install dev environment basics, assuming Ubuntu 1804 LTS (tested here only, but may work on others). 
-# TODO tested on Ubuntu 20??
+Follow these intructions to configure the development environment on an Ubuntu 18LTS or 20 host. It has been roughly tested on each. 
 
 Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion (to avoid dpkg lock conflicts). Restart as prompted and login again.
 
@@ -42,7 +41,12 @@ set_from_resource $accent1 accent1
 where the last value is the name in the .Xresources file. A default can optionally be given after this, in #000000 format. Other applications can inherit the same colour values from .Xresources where supported. 
 
 ## Xresrouces: ~/.Xresources
-This file is used to specify colours for import into the i3 config, and can be used by other programs Eg terminal emulators for consistent theming (not yet implemented here). 
+This file is used to specify colours for import into the i3 config, and these same colours can be used by other programs e.g. terminal emulators for consistent theming. This is not yet implemented here. 
+
+The following command must be used to reload the file for the changes to take effect
+```bash
+xrdb ~/.Xresources
+```
 
 ## i3status config: ~/.config/i3status/config
 Used to specify the format and content of the status bar. Alternatives offer more functionality, e.g. i3blocks, but I didn't see them as necessary yet. 
