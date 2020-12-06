@@ -162,6 +162,9 @@ handle_previous_cmd_result $? "Created vscode config directory for user. " "Coul
 cp vscode-settings.json ~/.config/Code/User/settings.json  >> $logfile 2>&1
 handle_previous_cmd_result $? "Copied vscode settings. " "Could not copy vscode settings"
 
+# Setup vscode as default git editor
+git config --global core.editor "code --wait"
+handle_previous_cmd_result $? "Set vscode as default git editor. ", "Could not set vscode as default git editor"
 
 # Setup Gnome favorites bar
 gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop', 'org.gnome.Terminal.desktop']"
