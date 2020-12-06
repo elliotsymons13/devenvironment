@@ -53,6 +53,11 @@ exec_always --no-startup-id vmware-user-suid-wrapper
 # Fix scaling using Xresources file (value inserted in setup script)
 exec xrdb ~/.Xresources
 
+# Start alttab - support for alt tab - ref: https://github.com/sagb/alttab
+exec_always alttab
+# Tab between workspaces with Win+Tab
+bindsym $mod+Tab workspace back_and_forth
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -185,6 +190,7 @@ bindsym $mod+r mode "resize"
 # Screen snipping (with flameshot)
 exec --no-startup-id flameshot
 bindsym Print exec "flameshot gui"
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
