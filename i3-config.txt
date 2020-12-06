@@ -53,8 +53,8 @@ exec_always --no-startup-id vmware-user-suid-wrapper
 # Fix scaling using Xresources file (value inserted in setup script)
 exec xrdb ~/.Xresources
 
-# Start alttab - support for alt tab - ref: https://github.com/sagb/alttab
-exec_always alttab
+# Start alttab - support for alt tab
+exec_always alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x64
 # Tab between workspaces with Win+Tab
 bindsym $mod+Tab workspace back_and_forth
 
