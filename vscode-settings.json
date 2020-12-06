@@ -11,29 +11,43 @@
     "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
     "todo-tree.highlights.defaultHighlight": {
         "icon": "alert",
-        "type": "text",
-        "opacity": 50,
-        "iconColour": "blue",
+        "type": "tag",
+        "opacity": 40,
+        "iconColour": "#FEB548",
     },
     "todo-tree.highlights.customHighlight": {
         "TODO": {
-            "icon": "check",
+            "icon": "light-bulb",
+            "gutterIcon": true,
         },
         "FIXME": {
             "foreground": "white",
-            "background": "red",
-            "iconColour": "red",
-            "gutterIcon": true
+            "background": "#F05D5E",
+            "iconColour": "#F05D5E",
+            "gutterIcon": true,
+            "icon": "flame",
+            "type": "whole-line"
+        },
+        "HACK": {
+            "foreground": "white",
+            "background": "#F05D5E",
+            "iconColour": "#F05D5E",
+            "gutterIcon": true,
+            "icon": "thumbsdown",
+            "type": "whole-line"
         },
         "BUG": {
             "foreground": "white",
-            "background": "red",
-            "iconColour": "yellow",
-            "gutterIcon": true
+            "background": "#FEB548",
+            "iconColour": "#FEB548",
+            "gutterIcon": true,
+            "icon": "bug",
+            "type": "text"
         }
     },
     "workbench.colorTheme": "Monokai",
     "git.enableSmartCommit": true,
-    "workbench.iconTheme": "material-icon-theme"
-
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": false,
+    "editor.minimap.enabled": false
 }
