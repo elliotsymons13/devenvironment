@@ -105,40 +105,34 @@ cp sethdpi.sh ~/.sethdpi.sh
 cp X96dpi.txt ~/.X96dpi
 cp X192dpi.txt ~/.X192dpi
 
-// FIXME Fix below 
-touch ~/.Xresources
-echo "Xft.dpi: 96" > ~/.Xresources
-xrdb ~/.Xresources
-
 # TODO Fix scaling - make Xresources file
 #ref: https://www.reddit.com/r/i3wm/comments/6kxq83/i3wm_scaling_is_correct_but_programs_are_not_hidpi/
 # TODO make value conditional based on screen size? Currently good only for 1080p
-# FIXME see above, below is the old version 
 # echo "Copying Xresources file... " | tee -a $logfile
-# cp ./Xresources.txt ~/.Xresources
-# if [ $? -eq 0 ] 
-# then
-#     printf "Installed Xresources file.  \n\n" | tee -a $logfile
-# else 
-#     printf "=== FAILURE to install Xresources file === \n" | tee -a $logfile
-#     if [ "$exitonfail" = true ]; 
-#     then
-#         echo "Exiting... see log for details" | tee -a $logfile
-#         exit 1
-#     fi
-# fi
-# xrdb ~/.Xresources
-# if [ $? -eq 0 ] 
-# then
-#     printf "Re-loaded Xresources file.  \n\n" | tee -a $logfile
-# else 
-#     printf "=== FAILURE to reload Xresources file === \n" | tee -a $logfile
-#     if [ "$exitonfail" = true ]; 
-#     then
-#         echo "Exiting... see log for details" | tee -a $logfile
-#         exit 1
-#     fi
-# fi
+cp ./Xresources.txt ~/.Xresources
+if [ $? -eq 0 ] 
+then
+    printf "Installed Xresources file.  \n\n" | tee -a $logfile
+else 
+    printf "=== FAILURE to install Xresources file === \n" | tee -a $logfile
+    if [ "$exitonfail" = true ]; 
+    then
+        echo "Exiting... see log for details" | tee -a $logfile
+        exit 1
+    fi
+fi
+xrdb ~/.Xresources
+if [ $? -eq 0 ] 
+then
+    printf "Re-loaded Xresources file.  \n\n" | tee -a $logfile
+else 
+    printf "=== FAILURE to reload Xresources file === \n" | tee -a $logfile
+    if [ "$exitonfail" = true ]; 
+    then
+        echo "Exiting... see log for details" | tee -a $logfile
+        exit 1
+    fi
+fi
 
 
 # Copy in i3status  config file
