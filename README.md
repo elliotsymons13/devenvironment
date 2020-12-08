@@ -19,7 +19,7 @@ sudo apt-get install -y git # enter password as prompted
 git clone https://github.com/elliotsymons13/devenvironment.git
 cd ~/devenvironment/
 sudo chmod 755 ./dev-env-setup.sh 
-./dev-environment-setup.sh -e -s
+./dev-env-setup.sh -e -s
 ```
 Can optionally monitor detailed log with:
 ```bash

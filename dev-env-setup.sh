@@ -24,7 +24,7 @@ while getopts "esh:" thisinput; do
             exit
             ;;
         e)
-            echo "Will exit on first failure." | tee -a $logfile
+            echo "Will exit on first failure (you can confirm in each case)." | tee -a $logfile
             exitonfail=true
             ;;
         s)
@@ -95,7 +95,7 @@ handle_previous_cmd_result $? "Sucessfully set GB keyboard layout." "Could not s
 
 # Set timezone
 timedatectl set-timezone Europe/London
-handle_previous_cmd_result $? "set timezone London. ", "Could not set timezone"
+handle_previous_cmd_result $? "set timezone London. " "Could not set timezone"
 
 
 # Update
@@ -169,7 +169,7 @@ handle_previous_cmd_result $? "Copied vscode settings. " "Could not copy vscode 
 
 # Setup vscode as default git editor
 git config --global core.editor "code --wait"
-handle_previous_cmd_result $? "Set vscode as default git editor. ", "Could not set vscode as default git editor"
+handle_previous_cmd_result $? "Set vscode as default git editor. " "Could not set vscode as default git editor"
 
 # Setup Gnome favorites bar
 gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop', 'org.gnome.Terminal.desktop']"
