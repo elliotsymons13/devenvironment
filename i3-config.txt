@@ -58,16 +58,21 @@ exec_always alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x
 # Tab between workspaces with Win+Tab
 bindsym $mod+Tab workspace back_and_forth
 
+# Scale to display
+exec_always xrdb ~/.Xresources
+exec_always bash ~/.sethdpi.sh
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# start a terminal. Also toggle split, allowing spiral splitting for terminals only. 
+bindsym $mod+Return exec urxvt  ; split toggle
 
 # other program bindings
 bindsym $mod+b exec google-chrome
 bindsym $mod+c exec code
 bindsym $mod+n exec nautilus
+bindsym $mod+i exec code ~/.i3-shortcuts.md
 
 # kill focused window
 bindsym $mod+q kill
@@ -109,6 +114,9 @@ bindsym $mod+h split h
 # split in vertical orientation
 bindsym $mod+v split v
 
+# toggle split directions (between h, v)
+bindsym $mod+t split toggle
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -127,7 +135,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -205,16 +213,16 @@ bar {
         focused_workspace       $bg $accent2 $white
         active_workspace        $bg $bg $white
         inactive_workspace      $bg $bg $white
-        urgent_workspacei       $bg $accent1 $bg
+        urgent_workspace       $bg $accent1 $bg
     }
         status_command i3status
 }
  
-#                          BORDER           BACKGROUND  TEXT    INDICATOR   CHILD_BORDER
-client.focused			   $accent1         $accent1    $td     $td         $accent1
-client.focused_inactive	   $bg              $bg         $tl     $bg         $bg
-client.unfocused		   $bg              $bg         $tl     $bg         $bg
-client.urgent			   $accent2         $accent2    $tl     $bg         $bg
-client.placeholder		   $bg              $bg         $tl     $bg         $bg
-client.background		   $bg     
+#                               BORDER           BACKGROUND  TEXT    INDICATOR   CHILD_BORDER
+client.focused	                $accent1         $accent1    $td     $accent2    $accent1
+client.focused_inactive	        $bg              $bg         $tl     $bg         $bg
+client.unfocused		$bg              $bg         $tl     $bg         $bg
+client.urgent			$accent2         $accent2    $tl     $bg         $bg
+client.placeholder		$bg              $bg         $tl     $bg         $bg
+client.background		$bg     
 

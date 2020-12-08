@@ -7,3 +7,5 @@ ranger
 tmux
 flameshot
 alttab
+rxvt
+tree

@@ -1,0 +1,13 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "alt+right",
+        "command": "merge-conflict.next",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+left",
+        "command": "merge-conflict.previous",
+        "when": "editorTextFocus"
+    }
+]

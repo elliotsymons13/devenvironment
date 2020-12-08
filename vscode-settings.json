@@ -1,5 +1,7 @@
 {
+    "workbench.iconTheme": "material-icon-theme",
     "files.autoSave": "onFocusChange",
+    "window.restoreWindows": "all",
     "window.zoomLevel": -1,
     "git-graph.maxDepthOfRepoSearch": 5,
     "todo-tree.highlights.enabled": true,
@@ -49,5 +51,7 @@
     "git.enableSmartCommit": true,
     "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": false,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "git.enableSmartCommit": true,
+    "cSpell.language": "en-GB"
 }

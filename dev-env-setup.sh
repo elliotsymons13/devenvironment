@@ -93,6 +93,11 @@ setxkbmap -layout gb
 handle_previous_cmd_result $? "Sucessfully set GB keyboard layout." "Could not set GB keyboard layout"
 
 
+# Set timezone
+timedatectl set-timezone Europe/London
+handle_previous_cmd_result $? "set timezone London. ", "Could not set timezone"
+
+
 # Update
 echo "Running apt-get update... (long)" | tee -a $logfile
 sudo apt-get update >> $logfile 2>&1
