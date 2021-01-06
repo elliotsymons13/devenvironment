@@ -16,7 +16,7 @@ Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to c
 
 Now run the following commands to run the script. **Note that the script assumes it is run from it's own location (relative filepaths).** 
 
-Tbe below sets up `config` as an alias allowing for git commands to be used to sync dotfiles between machines and Github. This process was based on an [attlasian tutorial](https://www.atlassian.com/git/tutorials/dotfiles) adn a [stackoverflow answer](https://stackoverflow.com/a/18999726)
+The below first sets up `config` as an alias allowing for git commands to be used to sync dotfiles between machines and Github. This process was based on an [attlasian tutorial](https://www.atlassian.com/git/tutorials/dotfiles) adn a [stackoverflow answer](https://stackoverflow.com/a/18999726)
 
 ```bash
 alias config='/usr/bin/git --git-dir=$HOME/.devenv/.git --work-tree=$HOME'
@@ -63,7 +63,7 @@ set_from_resource $accent1 accent1
 ```
 where the last value is the name in the .Xresources file. A default can optionally be given after this, in #000000 format. Other applications can inherit the same colour values from .Xresources where supported. 
 
-## Xresrouces: ~/.Xresources
+## Xresources: ~/.Xresources
 This file is used to specify colours for import into the i3 config, and these same colours can be used by other programs e.g. terminal emulators for consistent theming. This is not yet implemented here. 
 
 The following command must be used to reload the file for the changes to take effect

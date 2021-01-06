@@ -53,5 +53,8 @@
     "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
     "git.enableSmartCommit": true,
-    "cSpell.language": "en-GB"
+    "cSpell.language": "en-GB",
+    "cSpell.userWords": [
+        "stackoverflow"
+    ]
 }
