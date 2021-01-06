@@ -31,6 +31,25 @@ exec_always --no-startup-id xsetroot -solid "$bg"
 exec_always --no-startup-id lxpolkit &
 exec --no-startup-id blueman-applet
 
+# General (non-i3 specific) keybinds
+# Pulse Audio controls
+# TODO fix to support multiple devices, to limit to 100%, and to display percentage on i3bar
+set $audio_device 2
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_device +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -62,6 +81,7 @@ exec xrdb ~/.Xresources
 # Start alttab - support for alt tab
 exec_always alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x64
 # Tab between workspaces with Win+Tab
+
 bindsym $mod+Tab workspace back_and_forth
 
 # Scale to display
