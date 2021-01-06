@@ -160,21 +160,9 @@ then
     read -rsn1 -p"Press any key to continue";echo
 fi
 
-# Copy in vscode settings
-echo "Copying vscode settings..."
-mkdir -p ~/.config/Code/User/
-handle_previous_cmd_result $? "Created vscode config directory for user. " "Could not create vscode config dir"
-cp vscode-settings.json ~/.config/Code/User/settings.json  >> $logfile 2>&1
-handle_previous_cmd_result $? "Copied vscode settings. " "Could not copy vscode settings"
-
-# Setup vscode as default git editor
-cp .gitconfig ~/.gitconfig
-handle_previous_cmd_result $? "Set vscode as default git editor, including mergtool. " "Could not set vscode as default git editor"
-
 # Setup Gnome favorites bar
 gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop', 'org.gnome.Terminal.desktop']"
 handle_previous_cmd_result $? "Set favorites bar icons" "Could not set favorites bar icons"
-
 
 
 echo "SETUP COMPLETE. If not run with -e, check output and/or $logfile manually for errors (if you care). " | tee -a $logfile

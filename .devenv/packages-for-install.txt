@@ -9,3 +9,4 @@ flameshot
 alttab
 rxvt
 tree
+curl

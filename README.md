@@ -1,25 +1,41 @@
 # Purpose
+Provide a personalised utility for syncing my own dotfiles between development machines, VMs as well as performing initial system setup for new environments. 
+
 
 # Warnings
 There are several limitations in it's current state:
  - Tested only on Ubuntu 20 and 18, using bash shell
- - Does not support hdpi displays
- - Does not support OLED displays (brightness will be locked on full)
+ - Does not support hdpi displays well
+ - Does not directly support OLED displays (brightness will be locked on full)
  - (The above two can be mitigated when running in a VM using host settings)
 
 # Usage
 Follow these intructions to configure the development environment on an Ubuntu 18LTS or 20 host. It has been roughly tested on each. 
 
-Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion (to avoid dpkg lock conflicts). Restart as prompted and login again.
+Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion or not at all (to avoid dpkg lock conflicts). Restart as prompted and login again.
 
 Now run the following commands to run the script. **Note that the script assumes it is run from it's own location (relative filepaths).** 
 
+Tbe below sets up `config` as an alias allowing for git commands to be used to sync dotfiles between machines and Github. 
+
 ```bash
-sudo apt-get install -y git # enter password as prompted
-git clone https://github.com/elliotsymons13/devenvironment.git
-cd ~/devenvironment/
+alias config='/usr/bin/git --git-dir=$HOME/.devenv/.git --work-tree=$HOME'
+
+cd ~
+mkdir .devenv
+config init
+config remote add origin https://github.com/elliotsymons13/devenvironment.git
+config fetch
+config reset origin/master
+config checkout master
+config reset --hard 
+config config --local status.showUntrackedFiles no
+
+config status
+
+cd ~/.devenv/
 sudo chmod 755 ./dev-env-setup.sh 
-./dev-env-setup.sh -e -s
+./dev-env-setup.sh -e
 ```
 Can optionally monitor detailed log with:
 ```bash

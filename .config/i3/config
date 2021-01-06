@@ -13,6 +13,7 @@
 set $mod Mod4
 
 # Get colours from ~/.Xresources file
+exec xrdb ~/.Xresources
 set_from_resource $bg background
 set_from_resource $tl textlight
 set_from_resource $td textdark
@@ -24,6 +25,9 @@ set $black #000000
 
 # Set background 
 exec_always --no-startup-id xsetroot -solid "$bg"
+
+# Start background processes
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 
 
