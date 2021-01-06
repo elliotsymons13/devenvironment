@@ -27,7 +27,9 @@ set $black #000000
 exec_always --no-startup-id xsetroot -solid "$bg"
 
 # Start background processes
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+# Start polkit auth agent (e.g. for password prompt on save non-owned file)
+exec_always --no-startup-id lxpolkit &
+exec --no-startup-id blueman-applet
 
 
 

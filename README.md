@@ -16,7 +16,7 @@ Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to c
 
 Now run the following commands to run the script. **Note that the script assumes it is run from it's own location (relative filepaths).** 
 
-Tbe below sets up `config` as an alias allowing for git commands to be used to sync dotfiles between machines and Github. 
+Tbe below sets up `config` as an alias allowing for git commands to be used to sync dotfiles between machines and Github. This process was based on an [attlasian tutorial](https://www.atlassian.com/git/tutorials/dotfiles) adn a [stackoverflow answer](https://stackoverflow.com/a/18999726)
 
 ```bash
 alias config='/usr/bin/git --git-dir=$HOME/.devenv/.git --work-tree=$HOME'

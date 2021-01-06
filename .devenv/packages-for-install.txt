@@ -10,3 +10,5 @@ alttab
 rxvt
 tree
 curl
+lxpolkit
+blueman
