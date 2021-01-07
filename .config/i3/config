@@ -26,10 +26,20 @@ set $black #000000
 # Set background 
 exec_always --no-startup-id xsetroot -solid "$bg"
 
+
 # Start background processes
 # Start polkit auth agent (e.g. for password prompt on save non-owned file)
-exec_always --no-startup-id lxpolkit &
+exec --no-startup-id lxpolkit &
+# Start bluetooth tray manager
 exec --no-startup-id blueman-applet
+
+# Perform setup tasks
+# Set keyboard layout UK ref: https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3 
+exec_always setxkbmap -layout gb
+# Get copy paste working in VMware...
+exec_always --no-startup-id vmware-user-suid-wrapper
+# Fix scaling using Xresources file (value inserted in setup script)
+exec_always bash ~/.devenv/sethdpi.sh
 
 # General (non-i3 specific) keybinds
 # Pulse Audio controls
@@ -39,7 +49,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_d
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle # mute sound
 
-# Sreen brightness controls
+# Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
@@ -54,39 +64,16 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango: Noto Sans 8
-#font pango:monospace 8 #default
+font pango:monospace 8 #default
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-# Run startup commands 
-# Set keyboard layout UK ref: https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3 
-exec_always setxkbmap -layout gb
-# Get copy paste working in VMware...
-exec_always --no-startup-id vmware-user-suid-wrapper
-# Set 200% scaling (96 is 100%)
-#exec "xrandr --dpi 192" # too big on 1080, good on 4k but only does i3
-# Fix scaling using Xresources file (value inserted in setup script)
-exec xrdb ~/.Xresources
+# font pango:DejaVu Sans Mono 8
 
 # Start alttab - support for alt tab
 exec_always alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x64
 # Tab between workspaces with Win+Tab
-
 bindsym $mod+Tab workspace back_and_forth
-
-# Scale to display
-exec_always xrdb ~/.Xresources
-exec_always bash ~/.sethdpi.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

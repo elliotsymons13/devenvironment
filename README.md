@@ -10,7 +10,7 @@ There are several limitations in it's current state:
  - (The above two can be mitigated when running in a VM using host settings)
 
 # Usage
-Follow these intructions to configure the development environment on an Ubuntu 18LTS or 20 host. It has been roughly tested on each. 
+Follow these intructions to configure the development environment on an Ubuntu 18LTS or 20 host. It has been roughly tested on each. The system must be installed as described below, in the $HOME directory. This will ensure dotfiles sit 'in place' and are used normally.
 
 Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion or not at all (to avoid dpkg lock conflicts). Restart as prompted and login again.
 
@@ -48,6 +48,19 @@ tail -f ~/devenvironment/dev-env-setup.log
 cd ~/devenvironment/
 sudo chmod 755 ./i3-setup.sh
 ./i3-setup.sh
+```
+
+## Saving changes to dotfiles
+If positive changes are made to dotfiles on one local system, then these can optionally be commited. 
+The `config` alias is used in the same way as the normal git command, though can be run from any directory. 
+
+For example, to save all changes to already tracked files (including dotfiles):
+```bash
+config status
+config add -u
+config status
+config commit -m "Some descriptive message" 
+config push
 ```
 
 # Config descriptions
