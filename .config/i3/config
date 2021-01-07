@@ -32,6 +32,8 @@ exec_always --no-startup-id xsetroot -solid "$bg"
 exec --no-startup-id lxpolkit &
 # Start bluetooth tray manager
 exec --no-startup-id blueman-applet
+# Gnome lockscreen
+exec_always --no-startup-id /usr/bin/gnome-screensaver
 
 # Perform setup tasks
 # Set keyboard layout UK ref: https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3 
@@ -197,10 +199,11 @@ mode "(A)uto, (H)igh, (L)ow dpi" {
 }
 
 # Create Log out, Reboot, Poweroff bindings
-mode "(S)leep, (L)ogout, (R)eboot, (P)oweroff" {
+mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff" {
         bindsym r exec --no-startup-id systemctl reboot
-        bindsym s exec --no-startup-id systemctl suspend; mode "default"
-        bindsym l exit
+        bindsym s exec --no-startup-id systemctl suspend; exec --no-startup-id gnome-screensaver-command -l; mode "default"
+        bindsym e exit
+        bindsym l exec --no-startup-id gnome-screensaver-command -l ; mode "default"
         bindsym p exec --no-startup-id systemctl poweroff
 
         # back to normal: Enter or Escape
@@ -208,7 +211,7 @@ mode "(S)leep, (L)ogout, (R)eboot, (P)oweroff" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+e mode "(S)leep, (L)ogout, (R)eboot, (P)oweroff"
+bindsym $mod+Shift+e mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
