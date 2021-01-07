@@ -35,11 +35,11 @@ exec --no-startup-id blueman-applet
 
 # Perform setup tasks
 # Set keyboard layout UK ref: https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3 
-exec_always setxkbmap -layout gb
+exec setxkbmap -layout gb
 # Get copy paste working in VMware...
-exec_always --no-startup-id vmware-user-suid-wrapper
+exec --no-startup-id vmware-user-suid-wrapper
 # Fix scaling using Xresources file (value inserted in setup script)
-exec_always bash ~/.devenv/sethdpi.sh
+# exec_always bash ~/.devenv/sethdpi.sh # don't run here, run *before* restart
 
 # General (non-i3 specific) keybinds
 # Pulse Audio controls
@@ -174,12 +174,41 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# set different dpi modes (see sethdpi.sh script)
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# set DPI mode
+bindsym $mod+Shift+d mode "(A)uto, (H)igh, (L)ow dpi"
+mode "(A)uto, (H)igh, (L)ow dpi" {
+
+        # set mode
+        bindsym a exec "echo 'auto' > ~/.devenv/hdpimode ; ~/.devenv/sethdpi.sh"
+        bindsym h exec "echo 'hi' > ~/.devenv/hdpimode ; ~/.devenv/sethdpi.sh"
+        bindsym l exec "echo 'lo' > ~/.devenv/hdpimode ; ~/.devenv/sethdpi.sh"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default" restart #confirm
+        bindsym Escape mode "default" #decline changes
+}
+
+# Create Log out, Reboot, Poweroff bindings
+mode "(S)leep, (L)ogout, (R)eboot, (P)oweroff" {
+        bindsym r exec --no-startup-id systemctl reboot
+        bindsym s exec --no-startup-id systemctl suspend; mode "default"
+        bindsym l exit
+        bindsym p exec --no-startup-id systemctl poweroff
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+e mode "(S)leep, (L)ogout, (R)eboot, (P)oweroff"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
