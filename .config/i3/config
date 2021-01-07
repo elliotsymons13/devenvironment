@@ -47,20 +47,20 @@ exec --no-startup-id vmware-user-suid-wrapper
 # Pulse Audio controls
 # TODO fix to support multiple devices, to limit to 100%, and to display percentage on i3bar
 set $audio_device 2
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_device +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_device +5% # Sound: increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -5% # Sound: decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle # Sound: mute sound
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec ~/.devenv/increase_brightness.sh
-bindsym XF86MonBrightnessDown exec ~/.devenv/decrease_brightness.sh
+bindsym XF86MonBrightnessUp exec ~/.devenv/increase_brightness.sh # Screen: increase brightness
+bindsym XF86MonBrightnessDown exec ~/.devenv/decrease_brightness.sh # Screen: decrease brightness
 
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play # Media: play
+bindsym XF86AudioPause exec playerctl pause # Media: pause
+bindsym XF86AudioNext exec playerctl next # Media: skip/next
+bindsym XF86AudioPrev exec playerctl previous # Media: previous
 
 
 
@@ -76,117 +76,116 @@ font pango:monospace 8 #default
 # Start alttab - support for alt tab
 exec_always alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x64
 # Tab between workspaces with Win+Tab
-bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth # Tab between workspaces with Win+Tab
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal. Also toggle split, allowing spiral splitting for terminals only. 
-bindsym $mod+Return exec urxvt  ; split toggle
+# start a terminal. Optionally (commented) also toggle split, allowing spiral splitting for terminals only. # ; split toggle
+bindsym $mod+Return exec urxvt # Open: terminal
 
 # other program bindings
-bindsym $mod+b exec google-chrome
-bindsym $mod+c exec code
-bindsym $mod+n exec nautilus
-bindsym $mod+i exec code ~/.i3-shortcuts.md
+bindsym $mod+b exec google-chrome # Open: Google Chrome
+bindsym $mod+c exec code # Open: VSCode
+bindsym $mod+n exec nautilus # Open: Nautilus / Files
+bindsym $mod+i exec code ~/.binds.txt # View this cheatsheet
+bindsym $mod+Shift+i exec ~/.devenv/cheatsheet_update.sh
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+q kill # Quit i3
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'" # Dmenu - program launcher
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+j focus left # Focus left
+bindsym $mod+k focus down # Focus down
+bindsym $mod+l focus up # Focus up 
+bindsym $mod+semicolon focus right # Focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+Left focus left # Focus left
+bindsym $mod+Down focus down # Focus down
+bindsym $mod+Up focus up # Focus up
+bindsym $mod+Right focus right  # Focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+j move left # Move focused window left
+bindsym $mod+Shift+k move down # Move focused window down
+bindsym $mod+Shift+l move up # Move focused window up 
+bindsym $mod+Shift+semicolon move right # Move focused window right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move left # Move focused window left
+bindsym $mod+Shift+Down move down # Move focused window down
+bindsym $mod+Shift+Up move up # Move focused window up 
+bindsym $mod+Shift+Right move right # Move focused window right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+h split h # split in horizontal orientation
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split v # split in vertical orientation
 
 # toggle split directions (between h, v)
-bindsym $mod+t split toggle
+bindsym $mod+t split toggle # toggle split directions (between h, v)
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle # enter fullscreen mode for the focused container
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking # who wants stacking, really?
+bindsym $mod+w layout tabbed # Layout: Tabbed
+bindsym $mod+e layout toggle split # Layout: Split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle # Layout: toggle if current window is floating
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+space focus mode_toggle # toggle focus between floating, tiling
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+a focus parent # Focus parent
 
 # focus the child container
-# bindsym $mod+d focus child # clash with dmenu
+bindsym $mod+z focus child # Focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace 1 # Focus workspace 1
+bindsym $mod+2 workspace 2 # Focus workspace 2
+bindsym $mod+3 workspace 3 # Focus workspace 3
+bindsym $mod+4 workspace 4 # Focus workspace 4
+bindsym $mod+5 workspace 5 # Focus workspace 5
+bindsym $mod+6 workspace 6 # Focus workspace 6
+bindsym $mod+7 workspace 7 # Focus workspace 7
+bindsym $mod+8 workspace 8 # Focus workspace 8
+bindsym $mod+9 workspace 9 # Focus workspace 9
+bindsym $mod+0 workspace 10 # Focus workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-
-# set different dpi modes (see sethdpi.sh script)
+bindsym $mod+Shift+1 move container to workspace 1 # Move current window to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2 # Move current window to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3 # Move current window to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4 # Move current window to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5 # Move current window to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6 # Move current window to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7 # Move current window to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8 # Move current window to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9 # Move current window to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10 # Move current window to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload # reload the configuration file
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart # restart i3 inplace
 
 
 # set DPI mode
-bindsym $mod+Shift+d mode "(A)uto, (H)igh, (L)ow dpi"
+bindsym $mod+Shift+d mode "(A)uto, (H)igh, (L)ow dpi" # set DPI mode (prompt)
 mode "(A)uto, (H)igh, (L)ow dpi" {
 
         # set mode
@@ -200,6 +199,7 @@ mode "(A)uto, (H)igh, (L)ow dpi" {
 }
 
 # Create Log out, Reboot, Poweroff bindings
+bindsym $mod+Shift+e mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff" # power options (prompt)
 mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff" {
         bindsym r exec --no-startup-id systemctl reboot
         bindsym s exec --no-startup-id systemctl suspend; exec --no-startup-id gnome-screensaver-command -l; mode "default"
@@ -212,9 +212,9 @@ mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+e mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff"
 
 # resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize" # enter resize mode
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -238,12 +238,11 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
 
 ##### Custom functions #####
 # Screen snipping (with flameshot)
 exec --no-startup-id flameshot
-bindsym Print exec "flameshot gui"
+bindsym Print exec "flameshot gui" # Start: screenshot utility
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
