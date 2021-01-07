@@ -52,8 +52,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle # mute sound
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec ~/.devenv/increase_brightness.sh
+bindsym XF86MonBrightnessDown exec ~/.devenv/decrease_brightness.sh
+
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -189,9 +190,9 @@ bindsym $mod+Shift+d mode "(A)uto, (H)igh, (L)ow dpi"
 mode "(A)uto, (H)igh, (L)ow dpi" {
 
         # set mode
-        bindsym a exec "echo 'auto' > ~/.devenv/hdpimode ; ~/.devenv/sethdpi.sh"
-        bindsym h exec "echo 'hi' > ~/.devenv/hdpimode ; ~/.devenv/sethdpi.sh"
-        bindsym l exec "echo 'lo' > ~/.devenv/hdpimode ; ~/.devenv/sethdpi.sh"
+        bindsym a exec "echo 'auto' > ~/.devenv/dpimode ; ~/.devenv/sethdpi.sh"
+        bindsym h exec "echo 'hi' > ~/.devenv/dpimode ; ~/.devenv/sethdpi.sh"
+        bindsym l exec "echo 'lo' > ~/.devenv/dpimode ; ~/.devenv/sethdpi.sh"
 
         # back to normal: Enter or Escape
         bindsym Return mode "default" restart #confirm
