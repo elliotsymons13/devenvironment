@@ -16,15 +16,16 @@
 set $mod Mod4
 
 # Get colours from ~/.Xresources file
-exec xrdb ~/.Xresources
-set_from_resource $bg background
-set_from_resource $tl textlight
-set_from_resource $td textdark
-set_from_resource $accent1 accent1
-set_from_resource $accent2 accent2
-
 set $white #ffffff
 set $black #000000
+
+exec --no-startup-id xrdb ~/.Xresources
+set_from_resource $bg background $black
+set_from_resource $tl textlight $white
+set_from_resource $td textdark $black
+set_from_resource $accent1 accent1 #444444
+set_from_resource $accent2 accent2 #444444
+
 
 # Set background 
 exec_always --no-startup-id xsetroot -solid "$bg"
@@ -40,7 +41,7 @@ exec_always --no-startup-id /usr/bin/gnome-screensaver
 
 # Perform setup tasks
 # Set keyboard layout UK ref: https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3 
-exec setxkbmap -layout gb
+exec --no-startup-id setxkbmap -layout gb
 # Get copy paste working in VMware...
 exec --no-startup-id vmware-user-suid-wrapper
 # Fix scaling using Xresources file (value inserted in setup script)
@@ -86,7 +87,7 @@ font pango:monospace 8 #default
 # font pango:DejaVu Sans Mono 8
 
 # Start alttab - support for alt tab
-exec_always alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x64
+exec --no-startup-id alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x64
 # Tab between workspaces
 bindsym $mod+Tab workspace back_and_forth
 
@@ -95,7 +96,7 @@ floating_modifier $mod
 
 # start a terminal. Also toggle split, allowing spiral splitting for terminals only. 
 # Open: terminal
-bindsym $mod+Return exec urxvt  ; split toggle
+bindsym $mod+Return exec urxvt
 
 # other program bindings
 # Open: Google Chrome
@@ -338,3 +339,5 @@ client.urgent			$accent2         $accent2    $tl     $bg         $bg
 client.placeholder		$bg              $bg         $tl     $bg         $bg
 client.background		$bg     
 
+# restart on login (once, not always) to force a colour update
+exec i3-msg restart
