@@ -34,6 +34,7 @@ URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
 URxvt.depth: 24
+! Disable random text on paste? :
 URxvt.iso14755: false
 
 !! Common Keybinds for Navigations
@@ -44,19 +45,16 @@ URxvt.keysym.Control-Down: \033[1;5B
 URxvt.keysym.Control-Right: \033[1;5C
 URxvt.keysym.Control-Left: \033[1;5D
 
-!! Copy Paste & Other Extensions
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.copyCommand: xclip -i -selection clipboard
-URxvt.pasteCommand: xclip -o -selection clipboard
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-u: perl:url-select:select_next
+! Restore Ctrl+Shift+(c|v)
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 URxvt.urlLauncher: google-chrome
 URxvt.underlineURLs: true
 URxvt.urlButton: 1
+
+
 
 ! Basic theming
 urxvt*background: cbackground
@@ -66,7 +64,7 @@ urxvt*cursorColor: caccent1
 ! Molokai theme
 ! See: https://gist.github.com/vreon/845878
 urxvt*color0: #101010
-urxvt*color1: #960050
+urxvt*color1: #667750
 urxvt*color2: #66aa11
 urxvt*color3: #c47f2c
 urxvt*color4: #30309b

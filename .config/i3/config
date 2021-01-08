@@ -19,7 +19,7 @@ set $mod Mod4
 set $white #ffffff
 set $black #000000
 
-exec --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id xrdb ~/.Xresources
 set_from_resource $bg background $black
 set_from_resource $tl textlight $white
 set_from_resource $td textdark $black
