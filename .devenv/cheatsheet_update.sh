@@ -8,8 +8,9 @@ BINDS=$( sed -ne '/^bind/{
     s/--release //;
     s/$mod+/Win+/;
     s/exec //g;
-    s/bindsym //p}' <<< cat ~/.config/i3/config ) 
-echo $BINDS > ~/.devenv/binds.txt
+    s/bindsym //p};
+    s/^#/#/p' <<< cat ~/.config/i3/config ) 
+echo $BINDS > ~/.devenv/binds.txt #temp store
 
 # Put each keybind line into an array
 arr=()
@@ -19,13 +20,26 @@ done < ~/.devenv/binds.txt
 
 # Iterate through each binding and process for display
 echo "" > ~/.devenv/binds.txt # empty file for re-use
-for i in "${arr[@]}"
+line_above=""
+for line in "${arr[@]}"
 do
-    #echo "\nProcessing line: $i"
-    IFS=' ' read -r keypress remainder <<< "$i" #split kepress out of line
-    IFS='#' read -r cmd comment <<< "$remainder" #split command, comment out of line
-
-    echo "$keypress# $comment# $cmd" >> ~/.devenv/binds.txt
+    echo -e "\nProcessing line: $line"
+    # if first char of line is not #, then process command 
+    # (will begin bindsym by process of elimination from sed results above)
+    if [[ ! $line =~ ^\# ]] ; then
+      echo "processing bind.."
+      echo "line_above: $line_above"
+      IFS=' ' read -r keypress cmd <<< "$line" # split kepress out of line
+      echo "key: $keypress"
+      echo "cmd: $cmd"
+      comment=$( echo $line_above | sed 's/# //;s/#//g' )
+      echo "com: $comment"
+      echo "$keypress# $comment# $cmd" | tee -a ~/.devenv/binds.txt
+    else
+      # else just record and move on
+      line_above=$line
+      echo "Skipping as comment... $line_above"
+    fi
 done
 
 # Save to file

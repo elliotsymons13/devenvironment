@@ -5,6 +5,9 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+# All "bind..." commands should be immediately preceded by a comment on a new line
+# which should briefly explain the purpose of the command
+
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -47,20 +50,29 @@ exec --no-startup-id vmware-user-suid-wrapper
 # Pulse Audio controls
 # TODO fix to support multiple devices, to limit to 100%, and to display percentage on i3bar
 set $audio_device 2
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_device +5% # Sound: increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -5% # Sound: decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle # Sound: mute sound
+# Increase sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_device +5%
+# Decrease sound volume 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_device -5%
+# Mute sound
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_device toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec ~/.devenv/increase_brightness.sh # Screen: increase brightness
-bindsym XF86MonBrightnessDown exec ~/.devenv/decrease_brightness.sh # Screen: decrease brightness
+# Increase brightness
+bindsym XF86MonBrightnessUp exec ~/.devenv/increase_brightness.sh
+# Decrease brightness
+bindsym XF86MonBrightnessDown exec ~/.devenv/decrease_brightness.sh
 
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play # Media: play
-bindsym XF86AudioPause exec playerctl pause # Media: pause
-bindsym XF86AudioNext exec playerctl next # Media: skip/next
-bindsym XF86AudioPrev exec playerctl previous # Media: previous
+# Media: play
+bindsym XF86AudioPlay exec playerctl play
+# Media: Pause
+bindsym XF86AudioPause exec playerctl pause
+# Media: next / skip track
+bindsym XF86AudioNext exec playerctl next
+# Media: previous / last track
+bindsym XF86AudioPrev exec playerctl previous
 
 
 
@@ -75,117 +87,169 @@ font pango:monospace 8 #default
 
 # Start alttab - support for alt tab
 exec_always alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x64
-# Tab between workspaces with Win+Tab
-bindsym $mod+Tab workspace back_and_forth # Tab between workspaces with Win+Tab
+# Tab between workspaces
+bindsym $mod+Tab workspace back_and_forth
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal. Optionally (commented) also toggle split, allowing spiral splitting for terminals only. # ; split toggle
-bindsym $mod+Return exec urxvt # Open: terminal
+# start a terminal. Also toggle split, allowing spiral splitting for terminals only. 
+# Open: terminal
+bindsym $mod+Return exec urxvt  ; split toggle
 
 # other program bindings
-bindsym $mod+b exec google-chrome # Open: Google Chrome
-bindsym $mod+c exec code # Open: VSCode
-bindsym $mod+n exec nautilus # Open: Nautilus / Files
+# Open: Google Chrome
+bindsym $mod+b exec google-chrome
+# Open: VSCode
+bindsym $mod+c exec code
+# Open: files
+bindsym $mod+n exec nautilus
+# View cheatsheet
 bindsym $mod+i exec code ~/.binds.txt # View this cheatsheet
+# Refresh cheatsheet from i3 config
 bindsym $mod+Shift+i exec ~/.devenv/cheatsheet_update.sh
 
-# kill focused window
-bindsym $mod+q kill # Quit i3
+
+
+# Kill focused window
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'" # Dmenu - program launcher
+# Dmenu (application launcher)
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
 
 # change focus
-bindsym $mod+j focus left # Focus left
-bindsym $mod+k focus down # Focus down
-bindsym $mod+l focus up # Focus up 
-bindsym $mod+semicolon focus right # Focus right
+# Focus: left
+# bindsym $mod+j focus left
+# # Focus: down
+# bindsym $mod+k focus down
+# # Focus: up
+# bindsym $mod+l focus up
+# # Focus: right
+# bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left # Focus left
-bindsym $mod+Down focus down # Focus down
-bindsym $mod+Up focus up # Focus up
-bindsym $mod+Right focus right  # Focus right
+# Focus: left
+bindsym $mod+Left focus left
+# Focus: down
+bindsym $mod+Down focus down
+# Focus: up
+bindsym $mod+Up focus up
+# Focus: right
+bindsym $mod+Right focus right
+
+# Focus: parent
+bindsym $mod+a focus parent
+
+# Focus: child
+bindsym $mod+z focus child
 
 # move focused window
-bindsym $mod+Shift+j move left # Move focused window left
-bindsym $mod+Shift+k move down # Move focused window down
-bindsym $mod+Shift+l move up # Move focused window up 
-bindsym $mod+Shift+semicolon move right # Move focused window right
+# # Move Focused: left
+# bindsym $mod+Shift+j move left
+# # Move Focused: down
+# bindsym $mod+Shift+k move down
+# # Move Focused: up
+# bindsym $mod+Shift+l move up
+# # Move Focused: right
+# bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left # Move focused window left
-bindsym $mod+Shift+Down move down # Move focused window down
-bindsym $mod+Shift+Up move up # Move focused window up 
-bindsym $mod+Shift+Right move right # Move focused window right
+# Move Focused: left
+bindsym $mod+Shift+Left move left
+# Move Focused: down
+bindsym $mod+Shift+Down move down
+# Move Focused: up
+bindsym $mod+Shift+Up move up
+# Move Focused: right
+bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h # split in horizontal orientation
+# Split: horizontal
+bindsym $mod+h split h
 
-# split in vertical orientation
-bindsym $mod+v split v # split in vertical orientation
+# Split: vertical
+bindsym $mod+v split v
 
-# toggle split directions (between h, v)
-bindsym $mod+t split toggle # toggle split directions (between h, v)
+# Split: toggle direction
+bindsym $mod+t split toggle
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle # enter fullscreen mode for the focused container
 
-# change container layout (stacked, tabbed, toggle split)
-# bindsym $mod+s layout stacking # who wants stacking, really?
-bindsym $mod+w layout tabbed # Layout: Tabbed
-bindsym $mod+e layout toggle split # Layout: Split
+# Focused: fullscreen
+bindsym $mod+f fullscreen toggle
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle # Layout: toggle if current window is floating
+# Focused: change layout
+# Focused: change layout stacking
+# bindsym $mod+s layout stacking # who really wants this?
+# Focused: change layout tabbed
+bindsym $mod+w layout tabbed
+# Focused: change layout split
+bindsym $mod+e layout toggle split
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle # toggle focus between floating, tiling
 
-# focus the parent container
-bindsym $mod+a focus parent # Focus parent
+# Focused: toggle floating
+bindsym $mod+Shift+space floating toggle
 
-# focus the child container
-bindsym $mod+z focus child # Focus child
+# Toggle view floating / tiled
+bindsym $mod+space focus mode_toggle
 
 # switch to workspace
-bindsym $mod+1 workspace 1 # Focus workspace 1
-bindsym $mod+2 workspace 2 # Focus workspace 2
-bindsym $mod+3 workspace 3 # Focus workspace 3
-bindsym $mod+4 workspace 4 # Focus workspace 4
-bindsym $mod+5 workspace 5 # Focus workspace 5
-bindsym $mod+6 workspace 6 # Focus workspace 6
-bindsym $mod+7 workspace 7 # Focus workspace 7
-bindsym $mod+8 workspace 8 # Focus workspace 8
-bindsym $mod+9 workspace 9 # Focus workspace 9
-bindsym $mod+0 workspace 10 # Focus workspace 10
+# Workspace: #1
+bindsym $mod+1 workspace 1
+# Workspace: #2
+bindsym $mod+2 workspace 2
+# Workspace: #3
+bindsym $mod+3 workspace 3
+# Workspace: #4
+bindsym $mod+4 workspace 4
+# Workspace: #5
+bindsym $mod+5 workspace 5
+# Workspace: #6
+bindsym $mod+6 workspace 6
+# Workspace: #7
+bindsym $mod+7 workspace 7
+# Workspace: #8
+bindsym $mod+8 workspace 8
+# Workspace: #9
+bindsym $mod+9 workspace 9
+# Workspace: #10
+bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1 # Move current window to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2 # Move current window to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3 # Move current window to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4 # Move current window to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5 # Move current window to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6 # Move current window to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7 # Move current window to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8 # Move current window to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9 # Move current window to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10 # Move current window to workspace 10
+# Move to workspace: #1
+bindsym $mod+Shift+1 move container to workspace 1
+# Move to workspace: #2
+bindsym $mod+Shift+2 move container to workspace 2
+# Move to workspace: #3
+bindsym $mod+Shift+3 move container to workspace 3
+# Move to workspace: #4
+bindsym $mod+Shift+4 move container to workspace 4
+# Move to workspace: #5
+bindsym $mod+Shift+5 move container to workspace 5
+# Move to workspace: #6
+bindsym $mod+Shift+6 move container to workspace 6
+# Move to workspace: #7
+bindsym $mod+Shift+7 move container to workspace 7
+# Move to workspace: #8
+bindsym $mod+Shift+8 move container to workspace 8
+# Move to workspace: #9
+bindsym $mod+Shift+9 move container to workspace 9
+# Move to workspace: #10
+bindsym $mod+Shift+0 move container to workspace 10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload # reload the configuration file
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart # restart i3 inplace
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# Restart i3 inplace
+bindsym $mod+Shift+r restart
 
 
-# set DPI mode
-bindsym $mod+Shift+d mode "(A)uto, (H)igh, (L)ow dpi" # set DPI mode (prompt)
+# Set DPI mode (mode/prompt)
+bindsym $mod+Shift+d mode "(A)uto, (H)igh, (L)ow dpi"
 mode "(A)uto, (H)igh, (L)ow dpi" {
 
         # set mode
@@ -199,7 +263,8 @@ mode "(A)uto, (H)igh, (L)ow dpi" {
 }
 
 # Create Log out, Reboot, Poweroff bindings
-bindsym $mod+Shift+e mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff" # power options (prompt)
+# Perform power action (mode/prompt)
+bindsym $mod+Shift+e mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff"
 mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff" {
         bindsym r exec --no-startup-id systemctl reboot
         bindsym s exec --no-startup-id systemctl suspend; exec --no-startup-id gnome-screensaver-command -l; mode "default"
@@ -214,7 +279,8 @@ mode "(S)leep, (L)ock, (E)xit/logout, (R)eboot, (P)oweroff" {
 
 
 # resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize" # enter resize mode
+# Enter resize mode
+bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -222,10 +288,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        # bindsym j resize shrink width 10 px or 10 ppt
+        # bindsym k resize grow height 10 px or 10 ppt
+        # bindsym l resize shrink height 10 px or 10 ppt
+        # bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -242,7 +308,8 @@ mode "resize" {
 ##### Custom functions #####
 # Screen snipping (with flameshot)
 exec --no-startup-id flameshot
-bindsym Print exec "flameshot gui" # Start: screenshot utility
+# Start: prinscreen utility (flameshot)
+bindsym Print exec "flameshot gui"
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
