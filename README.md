@@ -10,7 +10,7 @@ There are several limitations in it's current state:
  - (The above two can be mitigated when running in a VM using host settings)
 
 # Usage
-Follow these intructions to configure the development environment on an Ubuntu 18LTS or 20 host. It has been roughly tested on each. The system must be installed as described below, in the $HOME directory. This will ensure dotfiles sit 'in place' and are used normally.
+Follow these instructions to configure the development environment on an Ubuntu 18LTS or 20 host. It has been roughly tested on each. The system must be installed as described below, in the $HOME directory. This will ensure dotfiles sit 'in place' and are used normally.
 
 Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion or not at all (to avoid dpkg lock conflicts). Restart as prompted and login again.
 
@@ -108,3 +108,11 @@ This list is derived from the results of running the following on a desired syst
 ```bash
 apt-mark showmanual
 ```
+
+# Icons
+
+Using Font Awesome icons
+
+Available: Font Awesome - release 5.15.2 [here](https://github.com/FortAwesome/Font-Awesome/commit/fcec2d1b01ff069ac10500ac42e4478d20d21f4c) download as ZIP, copy 3x main .ttf in `webfonts` subdir of download into ~/.fonts.
+
+Add icons by selecting e.g. [here](https://fontawesome.com/cheatsheet) and pasting the icon ID into the i3 config or elsewhere. 

@@ -26,18 +26,28 @@ set_from_resource $td textdark $black
 set_from_resource $accent1 accent1 #444444
 set_from_resource $accent2 accent2 #444444
 
-
-# Set background 
-exec_always --no-startup-id xsetroot -solid "$bg"
-
-
 # Start background processes
 # Start polkit auth agent (e.g. for password prompt on save non-owned file)
 exec --no-startup-id lxpolkit &
 # Start bluetooth tray manager
 exec --no-startup-id blueman-applet
+# Start network manager tray applet
+exec --no-startup-id nm-applet
 # Gnome lockscreen
 exec_always --no-startup-id /usr/bin/gnome-screensaver
+# compton
+#exec_always compton --config ~/.config/compton/compton.conf -b
+#exec_always compton --backend glx --paint-on-overlay --vsync opengl-swc #
+#exec_always compton --config ~/.config/compton/compton.conf -b
+# OR
+# picom
+# b in background, CG to disable shadows
+# TODO can you have both cli flags and config?
+exec_always picom #-b -CG
+
+# Set background 
+exec_always --no-startup-id xsetroot -solid "$bg"
+
 
 # Perform setup tasks
 # Set keyboard layout UK ref: https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3 
@@ -123,6 +133,7 @@ bindsym $mod+q kill
 # Dmenu (application launcher)
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:size=8'"
 
+
 # change focus
 # Focus: left
 # bindsym $mod+j focus left
@@ -197,49 +208,72 @@ bindsym $mod+Shift+space floating toggle
 # Toggle view floating / tiled
 bindsym $mod+space focus mode_toggle
 
+# workspace names
+set $workspace1 "1: Home "
+set $workspace2 "2: Code "
+set $workspace3 "3: Chrome "
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9"
+set $workspace10 "10"
+
 # switch to workspace
 # Workspace: #1
-bindsym $mod+1 workspace 1
+bindsym $mod+1 workspace $workspace1
 # Workspace: #2
-bindsym $mod+2 workspace 2
+bindsym $mod+2 workspace $workspace2
 # Workspace: #3
-bindsym $mod+3 workspace 3
+bindsym $mod+3 workspace $workspace3
 # Workspace: #4
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace $workspace4
 # Workspace: #5
-bindsym $mod+5 workspace 5
+bindsym $mod+5 workspace $workspace5
 # Workspace: #6
-bindsym $mod+6 workspace 6
+bindsym $mod+6 workspace $workspace6
 # Workspace: #7
-bindsym $mod+7 workspace 7
+bindsym $mod+7 workspace $workspace7
 # Workspace: #8
-bindsym $mod+8 workspace 8
+bindsym $mod+8 workspace $workspace8
 # Workspace: #9
-bindsym $mod+9 workspace 9
+bindsym $mod+9 workspace $workspace9
 # Workspace: #10
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
 # Move to workspace: #1
-bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+1 move container to workspace $workspace1
 # Move to workspace: #2
-bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+2 move container to workspace $workspace2
 # Move to workspace: #3
-bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+3 move container to workspace $workspace3
 # Move to workspace: #4
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+4 move container to workspace $workspace4
 # Move to workspace: #5
-bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+5 move container to workspace $workspace5
 # Move to workspace: #6
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+6 move container to workspace $workspace6
 # Move to workspace: #7
-bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+7 move container to workspace $workspace7
 # Move to workspace: #8
-bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+8 move container to workspace $workspace8
 # Move to workspace: #9
-bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+9 move container to workspace $workspace9
 # Move to workspace: #10
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# move focused workspace to output/monitor
+bindsym $mod+Control+right move workspace to output right
+bindsym $mod+Control+left move workspace to output left
+bindsym $mod+Control+up move workspace to output up
+bindsym $mod+Control+down move workspace to output down
+
+# default workspaces per application
+assign [class="Code"] $workspace2
+#assign [class="URxvt"] $workspace1
+#assign [class="Google-chrome"] $workspace3
 
 
 # Reload the configuration file
@@ -341,3 +375,9 @@ client.background		$bg
 
 # restart on login (once, not always) to force a colour update
 exec i3-msg restart
+
+# Open programs on i3 startup
+exec code
+#split v
+#exec google-chrome
+#split h 

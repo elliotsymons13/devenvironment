@@ -10,16 +10,16 @@ BINDS=$( sed -ne '/^bind/{
     s/exec //g;
     s/bindsym //p};
     s/^#/#/p' <<< cat ~/.config/i3/config ) 
-echo $BINDS > ~/.devenv/binds.txt #temp store
+echo $BINDS > ~/.devenv/.binds-temp.txt #temp store
 
 # Put each keybind line into an array
 arr=()
 while IFS= read -r line; do
   arr+=("$line")
-done < ~/.devenv/binds.txt
+done < ~/.devenv/.binds-temp.txt
 
 # Iterate through each binding and process for display
-echo "" > ~/.devenv/binds.txt # empty file for re-use
+echo "" > ~/.devenv/.binds-temp.txt # empty file for re-use
 line_above=""
 for line in "${arr[@]}"
 do
@@ -34,7 +34,7 @@ do
       echo "cmd: $cmd"
       comment=$( echo $line_above | sed 's/# //;s/#//g' )
       echo "com: $comment"
-      echo "$keypress# $comment# $cmd" | tee -a ~/.devenv/binds.txt
+      echo "$keypress# $comment# $cmd" | tee -a ~/.devenv/.binds-temp.txt
     else
       # else just record and move on
       line_above=$line
@@ -43,4 +43,7 @@ do
 done
 
 # Save to file
-column -et -c Keypress,Function,Command -s "#" ~/.devenv/binds.txt > ~/.binds.txt
+column -et -c Keypress,Function,Command -s "#" ~/.devenv/.binds-temp.txt > ~/.binds.txt
+
+# Delete temporary file
+rm ~/.devenv/.binds-temp.txt
