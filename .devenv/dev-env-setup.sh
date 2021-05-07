@@ -164,5 +164,53 @@ fi
 gsettings set org.gnome.shell favorite-apps "['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'code.desktop', 'org.gnome.Terminal.desktop']"
 handle_previous_cmd_result $? "Set favorites bar icons" "Could not set favorites bar icons"
 
+echo "Installing docker..." | tee -a $logfile
+# based on: https://docs.docker.com/engine/install/ubuntu/
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release >> $logfile 2>&1
+handle_previous_cmd_result $? "Installed docker dependencies" "Could not install docker dependencies"
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+handle_previous_cmd_result $? "Downloaded docker gpg" "Could not download docker gpg"
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+handle_previous_cmd_result $? "Setup docker repository" "Could not setup docker repository"
+sudo apt-get update
+handle_previous_cmd_result $? "Apt update" "Could not apt update"
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+handle_previous_cmd_result $? "Installed docker engine" "Could not install docker engine"
+sudo docker run hello-world 
+handle_previous_cmd_result $? "Docker tested - working" "Docker tested - not working"
+
+echo "Installing docker-compose..." | tee -a $logfile
+# based on: https://docs.docker.com/compose/install/
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+handle_previous_cmd_result $? "Downloaded docker compose binary" "Could not download docker compose binary"
+sudo chmod +x /usr/local/bin/docker-compose
+handle_previous_cmd_result $? "Made executable" "Could not make executable"
+docker-compose --version
+handle_previous_cmd_result $? "Docker compose installed sucesfully" "Docker-compose not installed or not executable"
+
+echo "Installing docker-compose command complation..." | tee -a $logfile
+# command completion for docker compose
+# based on: https://docs.docker.com/compose/completion/
+sudo curl \
+    -L https://raw.githubusercontent.com/docker/compose/1.29.1/contrib/completion/bash/docker-compose \
+    -o /etc/bash_completion.d/docker-compose
+handle_previous_cmd_result $? "Installed bash command completion for docker compose" "Could not install bash command completion for docker compose"
+
+echo "Installing golang..." | tee -a $logfile
+sudo curl -L https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -o /tmp/go.tar.gz
+handle_previous_cmd_result $? "Downloaded go tar" "Could not download go tar"
+sudo tar -C /usr/local -xzf /tmp/go.tar.gz
+handle_previous_cmd_result $? "Unpacked go" "Could not unpack go"
+echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.profile
+handle_previous_cmd_result $? "Added go to user path" "Could not add go to path"
+go version
+handle_previous_cmd_result $? "Tested go - working" "go is not installed, or not in path"
 
 echo "SETUP COMPLETE. If not run with -e, check output and/or $logfile manually for errors (if you care). " | tee -a $logfile

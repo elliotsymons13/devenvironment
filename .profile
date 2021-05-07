@@ -28,3 +28,5 @@ fi
 
 # ensure Xresources updated on login
 xrdb ~/.Xresources
+
+export PATH=$PATH:/usr/local/go/bin

@@ -1,23 +1,25 @@
 # Purpose
-Provide a personalised utility for syncing my own dotfiles between development machines, VMs as well as performing initial system setup for new environments. 
+Provide a personalised utility for syncing my own dotfiles between development machines, VMs as well as performing initial system setup for new environments. Setup is two stage. `dev-env-setup.sh` sets up a clean Gnome dev environment to my taste. Optionally, `i3-setup.sh` can be used to add i3wm as an alternative window manager, again configured to my tastes. 
 
 
 # Warnings
 There are several limitations in it's current state:
  - Tested only on Ubuntu 20 and 18, using bash shell
- - Does not support hdpi displays well
+   - Requires a computer using amd64 CPU (e.g. 'normal' Intel CPU), or some setup elements will fail
+ - Does not support hdpi displays well for i3 use
  - Does not directly support OLED displays (brightness will be locked on full)
+   - A slightly awful helper script system is a work in progress
  - (The above two can be mitigated when running in a VM using host settings)
 
 # Usage
-Follow these instructions to configure the development environment on an Ubuntu 18LTS or 20 host. It has been roughly tested on each. The system must be installed as described below, in the $HOME directory. This will ensure dotfiles sit 'in place' and are used normally.
+Follow these instructions to configure the development environment on an Ubuntu 18LTS or 20LTS host. It has been roughly tested on each. The system must be installed as described below, **in the $HOME directory**. This will ensure dotfiles sit 'in place' and are used normally.
 
-Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion or not at all (to avoid dpkg lock conflicts). Restart as prompted and login again.
+1) Install Ubuntu into VM/host as desired. Login. Run the GUI software updater to completion or not at all (to avoid dpkg lock conflicts). Restart as prompted and login again.
 
-Now run the following commands to run the script. **Note that the script assumes it is run from it's own location (relative filepaths).** 
+2) **Then** run the following commands to run the script. 
 
+**Note that the script assumes it is run from it's own location (relative filepaths).** 
 The below first sets up `config` as an alias allowing for git commands to be used to sync dotfiles between machines and Github. This process was based on an [attlasian tutorial](https://www.atlassian.com/git/tutorials/dotfiles) adn a [stackoverflow answer](https://stackoverflow.com/a/18999726)
-
 ```bash
 alias config='/usr/bin/git --git-dir=$HOME/.devenv/.git --work-tree=$HOME'
 
