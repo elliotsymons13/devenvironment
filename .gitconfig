@@ -1,4 +1,6 @@
 [core]
+	autocrlf = false
+	eol = lf
     editor = code --wait
 [merge]
     tool = vscode
@@ -8,5 +10,7 @@
     tool = vscode
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[difftool]
+    prompt = false
 [credential]
     helper = cache --timeout 60000
