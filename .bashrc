@@ -118,7 +118,3 @@ fi
 
 alias config='/usr/bin/git --git-dir=$HOME/.devenv/.git --work-tree=$HOME'
 
-bind '"\e[1;5D" backward-word' 
-bind '"\e[1;5C" forward-word'
-
-
