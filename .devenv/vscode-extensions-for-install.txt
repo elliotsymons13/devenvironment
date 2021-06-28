@@ -16,3 +16,4 @@ yzhang.markdown-all-in-one
 redhat.vscode-yaml
 naumovs.color-highlight
 yzane.markdown-pdf
+dqisme.sync-scroll

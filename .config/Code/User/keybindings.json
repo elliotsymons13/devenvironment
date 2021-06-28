@@ -9,5 +9,55 @@
         "key": "alt+left",
         "command": "merge-conflict.previous",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "bookmarks.toggleLabeled"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "-bookmarks.toggle",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+l",
+        "command": "-bookmarks.expandSelectionToNext",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+j",
+        "command": "-bookmarks.expandSelectionToPrevious",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+alt+k",
+        "command": "-bookmarks.shrinkSelection",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+l",
+        "command": "-bookmarks.jumpToNext",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "-bookmarks.jumpToPrevious",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+n",
+        "command": "bookmarks.jumpToNext"
+    },
+    {
+        "key": "ctrl+alt+v",
+        "command": "bookmarks.jumpToPrevious"
+    },
+    {
+        "key": "ctrl+alt+x",
+        "command": "bookmarksExplorer.focus"
+    },
+    {
+        "key": "ctrl+alt+c",
+        "command": "bookmarks.toggle"
     }
 ]
