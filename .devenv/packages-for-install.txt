@@ -43,3 +43,4 @@ libevdev-dev
 uthash-dev 
 libev-dev 
 libx11-xcb-dev
+python3-setuptools

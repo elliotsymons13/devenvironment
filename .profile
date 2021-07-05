@@ -29,4 +29,10 @@ fi
 # ensure Xresources updated on login
 xrdb ~/.Xresources
 
-export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:/usr/local/go/bin
+
+setxkbmap gb
+
+eval $(thefuck --alias damn)
+eval $(thefuck --alias crap)
+eval $(thefuck --alias oops)

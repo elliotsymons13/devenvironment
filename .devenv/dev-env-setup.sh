@@ -213,4 +213,8 @@ handle_previous_cmd_result $? "Added go to user path" "Could not add go to path"
 go version
 handle_previous_cmd_result $? "Tested go - working" "go is not installed, or not in path"
 
+echo "Installing thefuck..." | tee -a $logfile
+sudo pip3 install thefuck
+handle_previous_cmd_result $? "Installed thefuck" "Could not install thefuck using pip3"
+
 echo "SETUP COMPLETE. If not run with -e, check output and/or $logfile manually for errors (if you care). " | tee -a $logfile
