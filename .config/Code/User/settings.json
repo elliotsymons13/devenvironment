@@ -2,7 +2,6 @@
     "workbench.iconTheme": "material-icon-theme",
     "files.autoSave": "onFocusChange",
     "window.restoreWindows": "all",
-    "window.zoomLevel": -1,
     "git-graph.maxDepthOfRepoSearch": 5,
     "todo-tree.highlights.enabled": true,
     "editor.rulers": [
@@ -17,6 +16,14 @@
         "opacity": 40,
         "iconColour": "#FEB548",
     },
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "START HERE"
+    ],
     "todo-tree.highlights.customHighlight": {
         "TODO": {
             "icon": "light-bulb",
@@ -45,16 +52,34 @@
             "gutterIcon": true,
             "icon": "bug",
             "type": "text"
+        },
+        "START HERE": {
+            "icon": "star",
+            "gutterIcon": true,
+            "foreground": "white",
+            "background": "green"
         }
     },
     "workbench.colorTheme": "Monokai",
     "git.enableSmartCommit": true,
     "workbench.statusBar.visible": true,
-    "workbench.activityBar.visible": false,
     "editor.minimap.enabled": false,
     "git.enableSmartCommit": true,
     "cSpell.language": "en-GB",
     "cSpell.userWords": [
         "stackoverflow"
-    ]
+    ],
+    "window.zoomLevel": -1,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "terminal.integrated.cursorBlinking": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    }
+    // "go.toolsGopath": "/home/johndoes/go/tools",
+    // "go.goroot": "/usr/local/go/bin"
 }
