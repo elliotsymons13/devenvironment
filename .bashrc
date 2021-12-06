@@ -118,3 +118,4 @@ fi
 
 alias config='/usr/bin/git --git-dir=$HOME/.devenv/.git --work-tree=$HOME'
 
+setxkbmap gb
