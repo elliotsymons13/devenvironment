@@ -99,7 +99,10 @@ font pango:monospace 8 #default
 # Start alttab - support for alt tab
 exec_always --no-startup-id alttab -fg "$accent1" -bg "$bg" -frame "$accent2" -t 128x150 -i 127x64
 # Tab between workspaces
-bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
+# Switch between workspaces
+bindsym $mod+S workspace back_and_forth
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
