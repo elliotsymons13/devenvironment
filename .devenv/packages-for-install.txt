@@ -1,4 +1,8 @@
 cmake
+make
+vim
+g++
+terminator
 git
 grep
 python3
