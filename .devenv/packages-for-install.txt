@@ -6,14 +6,12 @@ terminator
 git
 grep
 python3
-python
 python3-pip
 ranger
 tmux
 compton
 flameshot
 alttab
-rxvt
 tree
 curl
 lxpolkit
@@ -48,3 +46,4 @@ uthash-dev
 libev-dev 
 libx11-xcb-dev
 python3-setuptools
+gnome-shell-extension-no-annoyance

@@ -36,3 +36,4 @@ setxkbmap gb
 eval $(thefuck --alias damn)
 eval $(thefuck --alias crap)
 eval $(thefuck --alias oops)
+export PATH=$PATH:/usr/local/go/bin

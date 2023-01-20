@@ -210,6 +210,7 @@ sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 handle_previous_cmd_result $? "Unpacked go" "Could not unpack go"
 echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.profile
 handle_previous_cmd_result $? "Added go to user path" "Could not add go to path"
+source ~/.profile
 go version
 handle_previous_cmd_result $? "Tested go - working" "go is not installed, or not in path"
 
