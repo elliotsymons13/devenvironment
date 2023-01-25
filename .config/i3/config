@@ -109,7 +109,7 @@ floating_modifier $mod
 
 # start a terminal. Also toggle split, allowing spiral splitting for terminals only. 
 # Open: terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec terminal #urxvt
 
 # other program bindings
 # Open: Google Chrome
@@ -380,7 +380,6 @@ client.background		$bg
 exec i3-msg restart
 
 # Open programs on i3 startup
-exec code
-#split v
-#exec google-chrome
-#split h 
+
+#exec code
+
