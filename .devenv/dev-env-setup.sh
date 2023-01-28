@@ -218,4 +218,14 @@ echo "Installing thefuck..." | tee -a $logfile
 sudo pip3 install thefuck
 handle_previous_cmd_result $? "Installed thefuck" "Could not install thefuck using pip3"
 
+echo "Setting ZSH as primary shell..." | tee -a $logfile
+sudo chsh -s $(which zsh)
+handle_previous_cmd_result $? "Installed zsh" "Could not install zsh"
+echo "Adding OhMyZsh framework..." | tee -a $logfile
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+handle_previous_cmd_result $? "Installed OhMyZsh" "Could not install OhMyZsh"
+
+
+
 echo "SETUP COMPLETE. If not run with -e, check output and/or $logfile manually for errors (if you care). " | tee -a $logfile
+echo "NOTE: logout and back in again for some changes e.g. shell change to take effect. "
