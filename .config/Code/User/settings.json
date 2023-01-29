@@ -79,7 +79,8 @@
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
-    }
+    },
+    "security.workspace.trust.untrustedFiles": "open"
     // "go.toolsGopath": "/home/johndoes/go/tools",
     // "go.goroot": "/usr/local/go/bin"
 }

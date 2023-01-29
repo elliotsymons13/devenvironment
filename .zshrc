@@ -73,7 +73,8 @@ ZSH_THEME="robbyrussell"
 plugins=(git golang cp copyfile copypath web-search)
 
 # Theme
-ZSH_THEME=refined
+ZSH_THEME=example
+#refined
 #intheloop
 #half-life
 

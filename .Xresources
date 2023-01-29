@@ -5,11 +5,15 @@ Xft.hinting: true
 
 ! === colourscheme for i3 === https://coolors.co/08d2d9-feb548-f05d5e-0f7173-2f343f
 #define cbackground #2f343f
+
+!! closest equivalent in zsh spectrum_ls is: 007
 #define cforeground #d8dee8
 #define ctextlight #d8dee8
 #define ctextdark #000000
 
+!! closest equivalent in zsh spectrum_ls is: 215 or +- 1
 #define caccent1 #FEB548 
+!! closest equivalent in zsh spectrum_ls is: 009 or 203 or 204
 #define caccent2 #F05D5E
 
 *.background: cbackground

@@ -11,4 +11,8 @@
  - [copypath <dirname> - copy directory path as above](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copypath)
  - [web-search - add web search support to terminal](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/web-search)
    - `google searchterm1 searchterm 2`
- - 
+
+
+## guides
+- [customising/writing a theme, colours](https://blog.carbonfive.com/writing-zsh-themes-a-quickref/)
+  - Includes how to do "arrows" style :D
