@@ -73,7 +73,7 @@ export ZSH="$HOME/.oh-my-zsh"
 plugins=(git golang cp copyfile copypath web-search)
 
 # Theme
-ZSH_THEME=example
+ZSH_THEME=custom
 #refined
 #intheloop
 #half-life

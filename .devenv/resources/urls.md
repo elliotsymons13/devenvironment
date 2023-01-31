@@ -10,7 +10,7 @@
  - [copyfile <filename> - copy the filepath of a specified file](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copyfile)
  - [copypath <dirname> - copy directory path as above](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copypath)
  - [web-search - add web search support to terminal](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/web-search)
-   - `google searchterm1 searchterm 2`
+   - `google searchterm1 searchterm2`
 
 
 ## guides
