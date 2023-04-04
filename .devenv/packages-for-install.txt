@@ -1,4 +1,3 @@
-zsh
 terminator
 cmake
 make
@@ -48,4 +47,4 @@ uthash-dev
 libev-dev 
 libx11-xcb-dev
 python3-setuptools
-gnome-shell-extension-no-annoyance
+zsh
