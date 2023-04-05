@@ -109,7 +109,7 @@ floating_modifier $mod
 
 # start a terminal. Also toggle split, allowing spiral splitting for terminals only. 
 # Open: terminal
-bindsym $mod+Return exec terminal #urxvt
+bindsym $mod+Return exec gnome-terminal #urxvt
 
 # other program bindings
 # Open: Google Chrome
