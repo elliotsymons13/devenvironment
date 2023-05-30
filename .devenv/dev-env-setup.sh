@@ -188,7 +188,7 @@ handle_previous_cmd_result $? "Docker tested - working" "Docker tested - not wor
 
 echo "Installing docker-compose..." | tee -a $logfile
 # based on: https://docs.docker.com/compose/install/
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 handle_previous_cmd_result $? "Downloaded docker compose binary" "Could not download docker compose binary"
 sudo chmod +x /usr/local/bin/docker-compose
 handle_previous_cmd_result $? "Made executable" "Could not make executable"
@@ -199,12 +199,12 @@ echo "Installing docker-compose command complation..." | tee -a $logfile
 # command completion for docker compose
 # based on: https://docs.docker.com/compose/completion/
 sudo curl \
-    -L https://raw.githubusercontent.com/docker/compose/1.29.1/contrib/completion/bash/docker-compose \
+    -L https://raw.githubusercontent.com/docker/compose/v2.18.1/contrib/completion/bash/docker-compose \
     -o /etc/bash_completion.d/docker-compose
 handle_previous_cmd_result $? "Installed bash command completion for docker compose" "Could not install bash command completion for docker compose"
 
 echo "Installing golang..." | tee -a $logfile
-sudo curl -L https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -o /tmp/go.tar.gz
+sudo curl -L https://go.dev/dl/go1.20.4.linux-amd64.tar.gz -o /tmp/go.tar.gz
 handle_previous_cmd_result $? "Downloaded go tar" "Could not download go tar"
 sudo tar -C /usr/local -xzf /tmp/go.tar.gz
 handle_previous_cmd_result $? "Unpacked go" "Could not unpack go"
@@ -218,14 +218,20 @@ echo "Installing thefuck..." | tee -a $logfile
 sudo pip3 install thefuck
 handle_previous_cmd_result $? "Installed thefuck" "Could not install thefuck using pip3"
 
-echo "Setting ZSH as primary shell..." | tee -a $logfile
-sudo chsh -s $(which zsh)
-handle_previous_cmd_result $? "Installed zsh" "Could not install zsh"
+#echo "Setting ZSH as primary shell..." | tee -a $logfile
+#sudo chsh -s $(which zsh)
+#handle_previous_cmd_result $? "Installed zsh" "Could not install zsh"
+echo "Removing any existing oh-my-zsh install" | tee -a $logfile
+sudo rm -rf ~/.oh-my-zsh/
 echo "Adding OhMyZsh framework..." | tee -a $logfile
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 handle_previous_cmd_result $? "Installed OhMyZsh" "Could not install OhMyZsh"
-
-
+echo "Copying custom OhMyZsh theme..." | tee -a $logfile
+yes | cp -rf ~/.devenv/.oh-my-zsh ~/.oh-my-zsh
+handle_previous_cmd_result $? "Installed OhMyZsh custom stuffs" "Could not install OhMyZsh custom stuffs"
+echo "Copying custom OhMyZsh .zshrc..." | tee -a $logfile
+yes | cp -rf ~/.devenv/.zshrc ~/
+handle_previous_cmd_result $? "Installed OhMyZsh .zshrc" "Could not install OhMyZsh .zshrc"
 
 echo "SETUP COMPLETE. If not run with -e, check output and/or $logfile manually for errors (if you care). " | tee -a $logfile
 echo "NOTE: logout and back in again for some changes e.g. shell change to take effect. "
