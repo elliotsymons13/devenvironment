@@ -80,7 +80,11 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "security.workspace.trust.untrustedFiles": "open"
+    "security.workspace.trust.untrustedFiles": "open",
     // "go.toolsGopath": "/home/johndoes/go/tools",
     // "go.goroot": "/usr/local/go/bin"
+    // disable tabs, ensure that Ctrl+Tab opens recent files, hide "open editors" in left file tree
+    "workbench.editor.showTabs": "none",
+    "workbench.editor.enablePreview": false,
+    // "explorer.openEditors.visible": 0
 }
