@@ -59,5 +59,9 @@
     {
         "key": "ctrl+alt+c",
         "command": "bookmarks.toggle"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.navigateEditorGroups"
     }
 ]
