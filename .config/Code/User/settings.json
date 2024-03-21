@@ -1,5 +1,5 @@
 {
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "Monokai Pro Icons",
     "files.autoSave": "onFocusChange",
     "window.restoreWindows": "all",
     "git-graph.maxDepthOfRepoSearch": 5,
@@ -84,7 +84,18 @@
     // "go.toolsGopath": "/home/johndoes/go/tools",
     // "go.goroot": "/usr/local/go/bin"
     // disable tabs, ensure that Ctrl+Tab opens recent files, hide "open editors" in left file tree
-    "workbench.editor.showTabs": "none",
+    "workbench.editor.showTabs": "single",
     "workbench.editor.enablePreview": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "haskell.manageHLS": "GHCup",
     // "explorer.openEditors.visible": 0
+    "terminal.integrated.scrollback": 9999999999,
+    "editor.guides.bracketPairs": "active",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "workbench.activityBar.location": "hidden",
+    "workbench.panel.opensMaximized": "always",
 }
