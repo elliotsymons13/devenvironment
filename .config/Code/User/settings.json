@@ -95,7 +95,6 @@
     // "explorer.openEditors.visible": 0
     "terminal.integrated.scrollback": 9999999999,
     "editor.guides.bracketPairs": "active",
-    "terminal.integrated.defaultProfile.windows": "Git Bash",
     "workbench.activityBar.location": "hidden",
-    "workbench.panel.opensMaximized": "always",
+    "workbench.panel.opensMaximized": "always"
 }
