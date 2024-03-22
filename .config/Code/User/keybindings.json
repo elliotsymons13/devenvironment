@@ -1,5 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
+    // merge conflict navigation
     {
         "key": "alt+right",
         "command": "merge-conflict.next",
@@ -10,58 +11,37 @@
         "command": "merge-conflict.previous",
         "when": "editorTextFocus"
     },
-    {
-        "key": "ctrl+alt+b",
-        "command": "bookmarks.toggleLabeled"
-    },
-    {
-        "key": "ctrl+alt+k",
-        "command": "-bookmarks.toggle",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "shift+alt+l",
-        "command": "-bookmarks.expandSelectionToNext",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "shift+alt+j",
-        "command": "-bookmarks.expandSelectionToPrevious",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "shift+alt+k",
-        "command": "-bookmarks.shrinkSelection",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+alt+l",
-        "command": "-bookmarks.jumpToNext",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+alt+j",
-        "command": "-bookmarks.jumpToPrevious",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+alt+n",
-        "command": "bookmarks.jumpToNext"
-    },
-    {
-        "key": "ctrl+alt+v",
-        "command": "bookmarks.jumpToPrevious"
-    },
-    {
-        "key": "ctrl+alt+x",
-        "command": "bookmarksExplorer.focus"
-    },
-    {
-        "key": "ctrl+alt+c",
-        "command": "bookmarks.toggle"
-    },
+
+    // tabbing between groups (assumes settings have "single" tab i.e.: "workbench.editor.showTabs": "single",)
     {
         "key": "ctrl+tab",
-        "command": "workbench.action.navigateEditorGroups"
+        "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.focusPreviousGroup"
+    },
+    // Toggling between current editor group and terminal, 
+    // regardless of if that terminal is in the panel or a different editor group
+    {
+        "key": "ctrl+t",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.focusTitleBar", //work around to get out of terminalFocus first
+                "workbench.action.focusPreviousGroup",
+            ]
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus && panelFocus"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorFocus"
     }
 ]
